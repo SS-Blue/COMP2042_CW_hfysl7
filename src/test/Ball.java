@@ -40,12 +40,22 @@ abstract public class Ball {
         right.setLocation(center.getX()+(radiusA /2),center.getY());
 
 
-        ballFace = makeBall(center,radiusA,radiusB);
-        this.border = border;
-        this.inner  = inner;
+        ballFace = makeBall(center, radiusA, radiusB);
+        zeroSpeed();
+        setBallColor(inner, border);
+
+    }
+
+    private void zeroSpeed() {
         speedX = 0;
         speedY = 0;
     }
+
+    private void setBallColor(Color inner, Color border) {
+        this.border = border;
+        this.inner = inner;
+    }
+
 
     protected abstract Shape makeBall(Point2D center,int radiusA,int radiusB);
 
