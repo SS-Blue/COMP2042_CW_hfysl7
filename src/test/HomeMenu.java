@@ -59,7 +59,7 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
     private GameFrame owner;
 
     private boolean startClicked;
-    private boolean menuClicked;
+    private boolean exitClicked;
 
 
     public HomeMenu(GameFrame owner, Dimension area) {
@@ -187,7 +187,7 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
         FontRenderContext frc = g2d.getFontRenderContext();
 
         Rectangle2D txtRect = buttonFont.getStringBounds(START_TEXT, frc);
-        Rectangle2D mTxtRect = buttonFont.getStringBounds(EXIT_TEXT, frc);
+        Rectangle2D eTxtRect = buttonFont.getStringBounds(EXIT_TEXT, frc);
 
         g2d.setFont(buttonFont);
 
@@ -223,13 +223,13 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
         exitButton.setLocation(x, y);
 
 
-        x = (int) (exitButton.getWidth() - mTxtRect.getWidth()) / 2;
-        y = (int) (exitButton.getHeight() - mTxtRect.getHeight()) / 2;
+        x = (int) (exitButton.getWidth() - eTxtRect.getWidth()) / 2;
+        y = (int) (exitButton.getHeight() - eTxtRect.getHeight()) / 2;
 
         x += exitButton.x;
         y += exitButton.y + (startButton.height * 0.9);
 
-        if (menuClicked) {
+        if (exitClicked) {
             Color tmp = g2d.getColor();
 
             g2d.setColor(CLICKED_BUTTON_COLOR);
@@ -264,7 +264,7 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
             repaint(startButton.x, startButton.y, startButton.width + 1, startButton.height + 1);
 
         } else if (exitButton.contains(p)) {
-            menuClicked = true;
+            exitClicked = true;
             repaint(exitButton.x, exitButton.y, exitButton.width + 1, exitButton.height + 1);
         }
     }
@@ -274,8 +274,8 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
         if (startClicked) {
             startClicked = false;
             repaint(startButton.x, startButton.y, startButton.width + 1, startButton.height + 1);
-        } else if (menuClicked) {
-            menuClicked = false;
+        } else if (exitClicked) {
+            exitClicked = false;
             repaint(exitButton.x, exitButton.y, exitButton.width + 1, exitButton.height + 1);
         }
     }
