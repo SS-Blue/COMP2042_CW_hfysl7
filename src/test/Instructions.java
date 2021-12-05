@@ -114,7 +114,7 @@ public class Instructions extends JComponent implements MouseListener, MouseMoti
     }
 
     private void drawContainer(Graphics2D g2d) {
-        Image picture = Toolkit.getDefaultToolkit().getImage("brick.jpg");
+        Image picture = Toolkit.getDefaultToolkit().getImage("bear.jpg");
 
         Color prev = g2d.getColor();
 
