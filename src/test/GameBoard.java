@@ -204,7 +204,7 @@ public class GameBoard extends JComponent implements KeyListener, MouseListener,
     private String remainingLife(){
         life = "";
         for(int a = 0; a < wall.getBallCount(); a++)
-            life += "<3 ";
+            life += new String(Character.toChars(0x1F499));
         return life;
     }
 
