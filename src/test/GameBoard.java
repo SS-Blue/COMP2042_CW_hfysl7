@@ -45,6 +45,8 @@ public class GameBoard extends JComponent implements KeyListener, MouseListener,
 
     private String message;
     private String message2;
+    private String message3;
+    private String life;
 
     private boolean showPauseMenu;
 
@@ -71,6 +73,7 @@ public class GameBoard extends JComponent implements KeyListener, MouseListener,
         this.initialize();
         message = "";
         message2 = "";
+        message3 = "";
         wall = new Wall(new Rectangle(0, 0, DEF_WIDTH, DEF_HEIGHT), 30, 3, 6 / 2, new Point(300, 430));
 
         debugConsole = new DebugConsole(owner, wall, this);
@@ -82,6 +85,7 @@ public class GameBoard extends JComponent implements KeyListener, MouseListener,
             wall.findImpacts();
             message = String.format("Bricks: %d", wall.getBrickCount());
             message2 = String.format("Timer: %d",timer.getSeconds());
+            message3 = String.format("Remaining Life: %s",remainingLife());
             if (wall.isBallLost()) {
                 if (wall.ballEnd()) {
                     wall.wallReset();
@@ -129,6 +133,7 @@ public class GameBoard extends JComponent implements KeyListener, MouseListener,
         g2d.setColor(Color.BLUE);
         g2d.drawString(message, 260, 205);
         g2d.drawString(message2, 260, 225);
+        g2d.drawString(message3, 220, 245);
 
         drawBall(wall.ball, g2d);
 
@@ -194,6 +199,13 @@ public class GameBoard extends JComponent implements KeyListener, MouseListener,
     private void drawMenu(Graphics2D g2d) {
         obscureGameBoard(g2d);
         drawPauseMenu(g2d);
+    }
+
+    private String remainingLife(){
+        life = "";
+        for(int a = 0; a < wall.getBallCount(); a++)
+            life += "<3 ";
+        return life;
     }
 
     private void obscureGameBoard(Graphics2D g2d) {
