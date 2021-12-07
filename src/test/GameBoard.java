@@ -48,6 +48,8 @@ public class GameBoard extends JComponent implements KeyListener, MouseListener,
     private String message3;
     private String life;
 
+    private String individualScore;
+
     private boolean showPauseMenu;
 
     private Font menuFont;
@@ -74,6 +76,7 @@ public class GameBoard extends JComponent implements KeyListener, MouseListener,
         message = "";
         message2 = "";
         message3 = "";
+        individualScore = "";
         wall = new Wall(new Rectangle(0, 0, DEF_WIDTH, DEF_HEIGHT), 30, 3, 6 / 2, new Point(300, 430));
 
         debugConsole = new DebugConsole(owner, wall, this);
@@ -86,10 +89,12 @@ public class GameBoard extends JComponent implements KeyListener, MouseListener,
             message = String.format("Bricks: %d", wall.getBrickCount());
             message2 = String.format("Timer: %d",timer.getSeconds());
             message3 = String.format("Remaining Life: %s",remainingLife());
+            individualScore = String.format("Score: %d",wall.getIndividualScore());
             if (wall.isBallLost()) {
                 if (wall.ballEnd()) {
                     wall.wallReset();
                     timer.resetTimer();
+                    wall.resetScore();
                     message = "Game over";
                 }
                 wall.ballReset();
@@ -99,6 +104,7 @@ public class GameBoard extends JComponent implements KeyListener, MouseListener,
                     message = "Go to Next Level";
                     gameTimer.stop();
                     timer.resetTimer();
+                    wall.resetScore();
                     wall.ballReset();
                     wall.wallReset();
                     wall.nextLevel();
@@ -134,6 +140,7 @@ public class GameBoard extends JComponent implements KeyListener, MouseListener,
         g2d.drawString(message, 260, 205);
         g2d.drawString(message2, 260, 225);
         g2d.drawString(message3, 220, 245);
+        g2d.drawString(individualScore, 525, 475);
 
         drawBall(wall.ball, g2d);
 

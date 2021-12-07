@@ -40,6 +40,8 @@ public class Wall {
     private Brick[][] levels;
     private int level;
 
+    private int individualScore;
+
     private Point startPoint;
     private int brickCount;
     private int ballCount;
@@ -186,6 +188,7 @@ public class Wall {
              * because for every brick program checks for horizontal and vertical impacts
              */
             brickCount--;
+            individualScore += 10;
         } else if (impactBorder()) {
             ball.reverseX();
         } else if (ball.getPosition().getY() < area.getY()) {
@@ -230,6 +233,14 @@ public class Wall {
 
     public int getBallCount() {
         return ballCount;
+    }
+
+    public int getIndividualScore() {
+        return individualScore;
+    }
+
+    public void resetScore() {
+        individualScore = 0;
     }
 
     public boolean isBallLost() {
