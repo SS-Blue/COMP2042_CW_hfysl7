@@ -387,7 +387,6 @@ public class GameBoard extends JComponent implements KeyListener, MouseListener,
             this.setCursor(Cursor.getDefaultCursor());
         }
     }
-
     public void onLostFocus() {
         timer.stopTimer();
         gameTimer.stop();

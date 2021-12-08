@@ -41,6 +41,7 @@ public class Wall {
     private int level;
 
     private int individualScore;
+    private int totalScore;
 
     private Point startPoint;
     private int brickCount;
@@ -189,6 +190,7 @@ public class Wall {
              */
             brickCount--;
             individualScore += 10;
+            totalScore += individualScore;
         } else if (impactBorder()) {
             ball.reverseX();
         } else if (ball.getPosition().getY() < area.getY()) {
@@ -241,6 +243,10 @@ public class Wall {
 
     public void resetScore() {
         individualScore = 0;
+    }
+
+    public int getTotalScore() {
+        return totalScore;
     }
 
     public boolean isBallLost() {
