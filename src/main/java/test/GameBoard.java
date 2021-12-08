@@ -119,7 +119,6 @@ public class GameBoard extends JComponent implements KeyListener, MouseListener,
 
     }
 
-
     private void initialize() {
         this.setPreferredSize(new Dimension(DEF_WIDTH, DEF_HEIGHT));
         this.setFocusable(true);
@@ -129,18 +128,17 @@ public class GameBoard extends JComponent implements KeyListener, MouseListener,
         this.addMouseMotionListener(this);
     }
 
-
     public void paint(Graphics g) {
 
         Graphics2D g2d = (Graphics2D) g;
 
         clear(g2d);
 
-        g2d.setColor(Color.BLUE);
+        g2d.setColor(Color.GREEN);
         g2d.drawString(message, 260, 205);
         g2d.drawString(message2, 260, 225);
         g2d.drawString(message3, 220, 245);
-        g2d.drawString(individualScore, 525, 475);
+        g2d.drawString(individualScore, 540, 435);
 
         drawBall(wall.ball, g2d);
 
@@ -174,7 +172,6 @@ public class GameBoard extends JComponent implements KeyListener, MouseListener,
 
         g2d.setColor(brick.getBorderColor());
         g2d.draw(brick.getBrick());
-
 
         g2d.setColor(tmp);
     }
