@@ -1,8 +1,9 @@
-package test;
+package test.Components;
+
+import test.Components.Ball;
 
 import java.awt.*;
 import java.awt.Point;
-import java.awt.geom.GeneralPath;
 import java.awt.geom.Point2D;
 import java.util.Random;
 
