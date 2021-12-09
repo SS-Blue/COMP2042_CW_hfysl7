@@ -19,6 +19,7 @@ package test.Controller;
 
 import test.Components.Ball;
 import test.Components.Wall;
+import test.Display.GameBoardView;
 
 import javax.swing.*;
 import java.awt.*;
@@ -32,15 +33,15 @@ public class DebugConsole extends JDialog implements WindowListener {
 
     private JFrame owner;
     private DebugPanel debugPanel;
-    private GameBoard gameBoard;
+    private GameBoardView gameboardView;
     private Wall wall;
 
 
-    public DebugConsole(JFrame owner, Wall wall, GameBoard gameBoard) {
+    public DebugConsole(JFrame owner, Wall wall, GameBoardView gameboardView) {
 
         this.wall = wall;
         this.owner = owner;
-        this.gameBoard = gameBoard;
+        this.gameboardView = gameboardView;
         initialize();
 
         debugPanel = new DebugPanel(wall);
@@ -74,7 +75,7 @@ public class DebugConsole extends JDialog implements WindowListener {
 
     @Override
     public void windowClosing(WindowEvent windowEvent) {
-        gameBoard.repaint();
+        gameboardView.repaint();
     }
 
     @Override
