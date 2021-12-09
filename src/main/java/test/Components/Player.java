@@ -17,8 +17,6 @@
  */
 package test.Components;
 
-import test.Components.Ball;
-
 import java.awt.*;
 
 
@@ -38,8 +36,8 @@ public class Player {
 
 
     public Player(Point ballPoint, int width, int height, Rectangle container) {
-        this.ballPoint = ballPoint;
-        moveAmount = 0;
+        this.setBallPoint(ballPoint);
+        setMoveAmount(0);
         playerFace = makeRectangle(width, height);
         min = container.x + (width / 2);
         max = min + container.width - width;
@@ -47,7 +45,7 @@ public class Player {
     }
 
     private Rectangle makeRectangle(int width, int height) {
-        Point p = new Point((int) (ballPoint.getX() - (width / 2)), (int) ballPoint.getY());
+        Point p = new Point((int) (getBallPoint().getX() - (width / 2)), (int) getBallPoint().getY());
         return new Rectangle(p, new Dimension(width, height));
     }
 
@@ -56,23 +54,23 @@ public class Player {
     }
 
     public void move() {
-        double x = ballPoint.getX() + moveAmount;
+        double x = getBallPoint().getX() + getMoveAmount();
         if (x < min || x > max)
             return;
-        ballPoint.setLocation(x, ballPoint.getY());
-        playerFace.setLocation(ballPoint.x - (int) playerFace.getWidth() / 2, ballPoint.y);
+        getBallPoint().setLocation(x, getBallPoint().getY());
+        playerFace.setLocation(getBallPoint().x - (int) playerFace.getWidth() / 2, getBallPoint().y);
     }
 
     public void moveLeft() {
-        moveAmount = -DEF_MOVE_AMOUNT;
+        setMoveAmount(-DEF_MOVE_AMOUNT);
     }
 
     public void moveRight() {
-        moveAmount = DEF_MOVE_AMOUNT;
+        setMoveAmount(DEF_MOVE_AMOUNT);
     }
 
     public void stop() {
-        moveAmount = 0;
+        setMoveAmount(0);
     }
 
     public Shape getPlayerFace() {
@@ -80,7 +78,23 @@ public class Player {
     }
 
     public void moveTo(Point p) {
-        ballPoint.setLocation(p);
-        playerFace.setLocation(ballPoint.x - (int) playerFace.getWidth() / 2, ballPoint.y);
+        getBallPoint().setLocation(p);
+        playerFace.setLocation(getBallPoint().x - (int) playerFace.getWidth() / 2, getBallPoint().y);
+    }
+
+    public int getMoveAmount() {
+        return moveAmount;
+    }
+
+    public void setMoveAmount(int moveAmount) {
+        this.moveAmount = moveAmount;
+    }
+
+    public Point getBallPoint() {
+        return ballPoint;
+    }
+
+    public void setBallPoint(Point ballPoint) {
+        this.ballPoint = ballPoint;
     }
 }

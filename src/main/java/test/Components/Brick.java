@@ -1,7 +1,5 @@
 package test.Components;
 
-import test.Components.Ball;
-
 import java.awt.*;
 import java.awt.Point;
 import java.awt.geom.Point2D;
@@ -44,7 +42,8 @@ abstract public class Brick {
         brickFace = makeBrickFace(pos, size);
         this.border = border;
         this.inner = inner;
-        this.fullStrength = this.strength = strength;
+        this.setStrength(strength);
+        this.fullStrength = this.getStrength();
 
     }
 
@@ -90,18 +89,29 @@ abstract public class Brick {
 
     public void repair() {
         broken = false;
-        strength = fullStrength;
+        setStrength(fullStrength);
     }
 
     public void impact() {
-        strength--;
-        broken = (strength == 0);
+        setStrength(getStrength() - 1);
+        broken = (getStrength() == 0);
     }
 
     public static Random getRnd() {
         return rnd;
     }
 
+    public int getStrength() {
+        return strength;
+    }
+
+    public void setStrength(int strength) {
+        this.strength = strength;
+    }
+
+    protected Shape getBrickFace() {
+        return brickFace;
+    }
 }
 
 
