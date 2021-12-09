@@ -114,12 +114,18 @@ public class GameBoard extends JComponent implements KeyListener, MouseListener,
                 } else {
                     message = "ALL WALLS DESTROYED";
                     gameTimer.stop();
+                    printHighScore();
                 }
             }
-
             repaint();
         });
+    }
 
+    private void printHighScore() {
+        StringBuilder text = new StringBuilder();
+
+        //ImageIcon icon = new ImageIcon("yay.png");
+        JOptionPane.showMessageDialog(null, "Your Score: " + wall.getTotalScore(), "High Score", JOptionPane.INFORMATION_MESSAGE);
     }
 
     private void initialize() {
