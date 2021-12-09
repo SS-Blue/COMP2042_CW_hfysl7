@@ -1,6 +1,4 @@
-package test.GUI;
-
-import test.GUI.GameFrame;
+package test.Display;
 
 import javax.swing.*;
 import java.awt.*;

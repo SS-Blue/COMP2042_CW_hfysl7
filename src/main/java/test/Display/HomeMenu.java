@@ -15,9 +15,7 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package test.GUI;
-
-import test.GUI.GameFrame;
+package test.Display;
 
 import javax.swing.*;
 import java.awt.*;
