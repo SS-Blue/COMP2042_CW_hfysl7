@@ -192,7 +192,6 @@ public class Wall {
              */
             brickCount--;
             individualScore += 10;
-            totalScore += individualScore;
         } else if (impactBorder()) {
             ball.reverseX();
         } else if (ball.getPosition().getY() < area.getY()) {
@@ -248,6 +247,7 @@ public class Wall {
     }
 
     public int getTotalScore() {
+        totalScore += individualScore;
         return totalScore;
     }
 

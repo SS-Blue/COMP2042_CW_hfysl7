@@ -46,6 +46,7 @@ public class GameBoardController extends JComponent implements KeyListener, Mous
                     view.message = "Go to Next Level";
                     gameTimer.stop();
                     view.timer.resetTimer();
+                    view.wall.getTotalScore();
                     view.wall.resetScore();
                     view.wall.ballReset();
                     view.wall.wallReset();
