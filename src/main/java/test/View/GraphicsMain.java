@@ -17,13 +17,23 @@
  */
 package test.View;
 
-import java.awt.*;
+import test.View.GameFrame;
 
+import java.awt.*;
+import javax.sound.sampled.*;
+import java.io.File;
+import java.io.IOException;
 
 public class GraphicsMain {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         EventQueue.invokeLater(() -> new GameFrame().initialize());
-    }
 
+        File file = new File("summer.wav");
+        AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+        Clip clip = AudioSystem.getClip();
+        clip.open(audioStream);
+
+        clip.start();
+    }
 }
