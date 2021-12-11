@@ -12,11 +12,11 @@ class PlayerTest {
     private final Point BallPoint = new Point(300, 400);
     private final Rectangle Container = new Rectangle(0, 0, 600, 450);
 
-    private Player PTest;
+    private Player testPlayer;
 
     @BeforeEach
     void setUp() {
-        PTest = new Player(BallPoint, 150, 10, Container);
+        testPlayer = new Player(BallPoint, 150, 10, Container);
     }
 
     @Test
@@ -24,7 +24,7 @@ class PlayerTest {
 
         final Ball b = new RubberBall(BallPoint);
 
-        final boolean result = PTest.impact(b);
+        final boolean result = testPlayer.impact(b);
 
         assertTrue(result);
     }
@@ -33,25 +33,25 @@ class PlayerTest {
     @Test
     void testMoveToTheLeft() {
 
-        PTest.moveLeft();
+        testPlayer.moveLeft();
 
-        assertEquals(-5, PTest.getMoveAmount());
+        assertEquals(-5, testPlayer.getMoveAmount());
     }
 
     @Test
     void testMoveToTheRight() {
 
-        PTest.moveRight();
+        testPlayer.moveRight();
 
-        assertEquals(5, PTest.getMoveAmount());
+        assertEquals(5, testPlayer.getMoveAmount());
     }
 
     @Test
     void testStop() {
-        PTest.moveLeft();
-        PTest.stop();
+        testPlayer.moveLeft();
+        testPlayer.stop();
 
-        assertEquals(0, PTest.getMoveAmount());
+        assertEquals(0, testPlayer.getMoveAmount());
     }
 
     @Test
@@ -59,9 +59,9 @@ class PlayerTest {
 
         final Point p = new Point(10, 10);
 
-        PTest.moveTo(p);
+        testPlayer.moveTo(p);
 
-        assertEquals(new Point(10, 10), PTest.getBallPoint());
+        assertEquals(new Point(10, 10), testPlayer.getBallPoint());
 
     }
 }

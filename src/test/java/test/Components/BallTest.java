@@ -31,7 +31,7 @@ class BallTest {
         };
     }
     @Test
-    void moveTest() {
+    void testMove() {
         ballTest.setCenter(new Point(0,0));
         ballTest.setSpeed(2,4);
 
