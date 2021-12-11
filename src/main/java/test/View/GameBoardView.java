@@ -1,4 +1,4 @@
-package test.Display;
+package test.View;
 
 import test.Components.*;
 import test.Controller.DebugConsole;

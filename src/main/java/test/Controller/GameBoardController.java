@@ -1,8 +1,8 @@
 package test.Controller;
 
 import test.Components.Wall;
-import test.Display.GameBoardView;
-import test.Display.GameFrame;
+import test.View.GameBoardView;
+import test.View.GameFrame;
 
 import javax.swing.*;
 import java.awt.*;

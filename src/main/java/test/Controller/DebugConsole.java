@@ -19,7 +19,7 @@ package test.Controller;
 
 import test.Components.Ball;
 import test.Components.Wall;
-import test.Display.GameBoardView;
+import test.View.GameBoardView;
 
 import javax.swing.*;
 import java.awt.*;
