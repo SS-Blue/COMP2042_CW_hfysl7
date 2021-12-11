@@ -68,8 +68,8 @@ public class GameBoardView extends JComponent{
     public void printHighScore() {
         StringBuilder text = new StringBuilder();
 
-        //ImageIcon icon = new ImageIcon("yay.png");
-        JOptionPane.showMessageDialog(null, "Your Score: " + wall.getTotalScore(), "High Score", JOptionPane.INFORMATION_MESSAGE);
+        ImageIcon icon = new ImageIcon("champagne.png");
+        JOptionPane.showMessageDialog(null, "Your Score: " + wall.getTotalScore(), "High Score", JOptionPane.PLAIN_MESSAGE, icon);
     }
 
     public void paint(Graphics g) {
