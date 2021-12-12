@@ -7,6 +7,10 @@ import java.awt.geom.GeneralPath;
 import java.awt.geom.Point2D;
 import java.util.Random;
 
+/**
+ * This class is used when cracks appear in certain bricks
+ * @author Sue Sim
+ */
 public class Crack {
 
     private static final int CRACK_SECTIONS = 3;
@@ -27,6 +31,11 @@ public class Crack {
     private int steps;
 
 
+    /**
+     * @param brick Type of brick
+     * @param crackDepth Depth of crack
+     * @param steps
+     */
     public Crack(Brick brick, int crackDepth, int steps) {
         this.brick = brick;
 
@@ -37,15 +46,25 @@ public class Crack {
     }
 
 
+    /**
+     * @return the crack appearance
+     */
     public GeneralPath draw() {
 
         return crack;
     }
 
+    /**
+     * Reset crack
+     */
     public void reset() {
         crack.reset();
     }
 
+    /**
+     * @param point Starting point of the crack
+     * @param direction Direction of crack
+     */
     protected void makeCrack(Point2D point, int direction) {
         Rectangle bounds = brick.brickFace.getBounds();
 
@@ -86,6 +105,10 @@ public class Crack {
         }
     }
 
+    /**
+     * @param start Starting point of crack
+     * @param end Ending point of crack
+     */
     protected void makeCrack(Point start, Point end) {
 
         GeneralPath path = new GeneralPath();
@@ -117,11 +140,21 @@ public class Crack {
         crack.append(path, true);
     }
 
+    /**
+     * @param bound Bound of crack
+     * @return Random integer
+     */
     private int randomInBounds(int bound) {
         int n = (bound * 2) + 1;
         return rnd.nextInt(n) - bound;
     }
 
+    /**
+     * @param i Crack section
+     * @param steps Steps
+     * @param divisions Division of crack
+     * @return Direction of crack
+     */
     private boolean inMiddle(int i, int steps, int divisions) {
         int low = (steps / divisions);
         int up = low * (divisions - 1);
@@ -129,6 +162,11 @@ public class Crack {
         return (i > low) && (i < up);
     }
 
+    /**
+     * @param bound Jumping point
+     * @param probability Probability of jump
+     * @return
+     */
     private int jumps(int bound, double probability) {
 
         if (rnd.nextDouble() > probability)
@@ -137,6 +175,12 @@ public class Crack {
 
     }
 
+    /**
+     * @param from Starting point
+     * @param to Ending point
+     * @param direction Direction of extension
+     * @return New location
+     */
     private Point makeRandomPoint(Point from, Point to, int direction) {
 
         Point out = new Point();

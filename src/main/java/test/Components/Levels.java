@@ -2,6 +2,10 @@ package test.Components;
 
 import java.awt.*;
 
+/**
+ * This class is to show the number of levels and its arrangement of bricks
+ * @author Sue Sim
+ */
 public class Levels {
     private static final int LEVELS_COUNT = 5;
 
@@ -9,6 +13,15 @@ public class Levels {
     private static final int STEEL = 2;
     private static final int CEMENT = 3;
 
+    /**
+     * @param drawArea Appearance of brick
+     * @param brickCount Number of brick
+     * @param lineCount Number of lines of brick
+     * @param brickSizeRatio Ratio of size of brick
+     * @param typeA Type of brick
+     * @param typeB Type of brick
+     * @return Arrangement of brick
+     */
     private static Brick[] makeChessboardLevel(Rectangle drawArea, int brickCount, int lineCount, double brickSizeRatio, int typeA, int typeB) {
         /*
           if brickCount is not divisible by line count,brickCount is adjusted to the biggest
@@ -54,6 +67,13 @@ public class Levels {
         return tmp;
     }
 
+    /**
+     * @param drawArea Appearance of brick
+     * @param brickCount Number of brick
+     * @param lineCount Number of lines of brick
+     * @param brickDimensionRatio Ratio of dimension of brick
+     * @return Number of levels made
+     */
     public static Brick[][] makeLevels(Rectangle drawArea, int brickCount, int lineCount, double brickDimensionRatio) {
         Brick[][] tmp = new Brick[LEVELS_COUNT][];
         tmp[0] = makeChessboardLevel(drawArea, brickCount, lineCount, brickDimensionRatio, CLAY, CLAY);
@@ -64,6 +84,12 @@ public class Levels {
         return tmp;
     }
 
+    /**
+     * @param point Location point of brick
+     * @param size Size of brick
+     * @param type Type of brick
+     * @return Different arrangements of brick
+     */
     private static Brick makeBrick(Point point, Dimension size, int type) {
         Brick out;
         switch (type) {

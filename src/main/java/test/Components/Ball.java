@@ -5,7 +5,8 @@ import java.awt.geom.Point2D;
 import java.awt.geom.RectangularShape;
 
 /**
- * Created by filippo on 04/09/16.
+ * This class is to show the characteristics of balls in general
+ * @author Sue Sim
  */
 abstract public class Ball {
 
@@ -24,6 +25,13 @@ abstract public class Ball {
     private int speedX;
     private int speedY;
 
+    /**
+     * @param center Center of ball
+     * @param radiusA Radius of ball
+     * @param radiusB Radius of ball
+     * @param inner Inner color of ball
+     * @param border Border color of ball
+     */
     public Ball(Point2D center, int radiusA, int radiusB, Color inner, Color border) {
         this.setCenter(center);
 
@@ -45,19 +53,35 @@ abstract public class Ball {
 
     }
 
+    /**
+     * Set speed to 0
+     */
     private void zeroSpeed() {
         speedX = 0;
         speedY = 0;
     }
 
+    /**
+     * @param inner Inner color of ball
+     * @param border Border color of ball
+     */
     private void setBallColor(Color inner, Color border) {
         this.border = border;
         this.inner = inner;
     }
 
 
+    /**
+     * @param center Center point of ball
+     * @param radiusA Radius of ball
+     * @param radiusB Radius of ball
+     * @return Appearance of ball
+     */
     protected abstract Shape makeBall(Point2D center, int radiusA, int radiusB);
 
+    /**
+     * Move the ball by updating on the center point and frame
+     */
     public void move() {
         RectangularShape tmp = (RectangularShape) ballFace;
         getCenter().setLocation((getCenter().getX() + speedX), (getCenter().getY() + speedY));
@@ -71,6 +95,10 @@ abstract public class Ball {
         ballFace = tmp;
     }
 
+    /**
+     * @param x Set speed on x-axis
+     * @param y Set speed on y-axis
+     */
     public void setSpeed(int x, int y) {
         speedX = x;
         speedY = y;
@@ -84,22 +112,37 @@ abstract public class Ball {
         speedY = s;
     }
 
+    /**
+     * Reverse speed on x-axis
+     */
     public void reverseX() {
         speedX *= -1;
     }
 
+    /**
+     * Reverse speed on y-axis
+     */
     public void reverseY() {
         speedY *= -1;
     }
 
+    /**
+     * @return Get border color of ball
+     */
     public Color getBorderColor() {
         return border;
     }
 
+    /**
+     * @return Get color of the ball itself
+     */
     public Color getInnerColor() {
         return inner;
     }
 
+    /**
+     * @return Get position of ball
+     */
     public Point2D getPosition() {
         return getCenter();
     }
@@ -108,6 +151,9 @@ abstract public class Ball {
         return ballFace;
     }
 
+    /**
+     * @param p Location where the ball needs to move to
+     */
     public void moveTo(Point p) {
         getCenter().setLocation(p);
 
@@ -119,6 +165,10 @@ abstract public class Ball {
         ballFace = tmp;
     }
 
+    /**
+     * @param width Width of ball movement
+     * @param height Height of ball movement
+     */
     private void setPoints(double width, double height) {
         up.setLocation(getCenter().getX(), getCenter().getY() - (height / 2));
         down.setLocation(getCenter().getX(), getCenter().getY() + (height / 2));

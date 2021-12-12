@@ -5,9 +5,9 @@ import test.Components.Brick;
 import java.awt.*;
 import java.awt.Point;
 
-
 /**
- * Created by filippo on 04/09/16.
+ * This class is to show the characteristics of clay bricks
+ * @author Sue Sim
  */
 public class ClayBrick extends Brick {
 
@@ -17,10 +17,19 @@ public class ClayBrick extends Brick {
     private static final int CLAY_STRENGTH = 1;
 
 
+    /**
+     * @param point Point of brick
+     * @param size Size of brick
+     */
     public ClayBrick(Point point, Dimension size) {
         super(NAME, point, size, DEF_BORDER, DEF_INNER, CLAY_STRENGTH);
     }
 
+    /**
+     * @param pos Position of brick
+     * @param size Size of brick
+     * @return Appearance of brick
+     */
     @Override
     protected Shape makeBrickFace(Point pos, Dimension size) {
         return new Rectangle(pos, size);

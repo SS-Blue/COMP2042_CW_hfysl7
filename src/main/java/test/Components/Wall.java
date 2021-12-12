@@ -23,7 +23,10 @@ import java.awt.*;
 import java.awt.geom.Point2D;
 import java.util.Random;
 
-
+/**
+ * This class is to show the features displayed on the wall
+ * @author Sue Sim
+ */
 public class Wall {
 
     private static final int LEVELS_COUNT = 5;
@@ -50,6 +53,13 @@ public class Wall {
     private int ballCount;
     private boolean ballLost;
 
+    /**
+     * @param drawArea Area of game
+     * @param brickCount Number of bricks
+     * @param lineCount Number of lines
+     * @param brickDimensionRatio Ratio of the brick dimension
+     * @param ballPos Position of ball
+     */
     public Wall(Rectangle drawArea, int brickCount, int lineCount, double brickDimensionRatio, Point ballPos) {
 
         this.startPoint = new Point(ballPos);
@@ -165,6 +175,9 @@ public class Wall {
 //        return tmp;
 //    }
 
+    /**
+     * @param ballPos Create new ball to specific location
+     */
     private void makeBall(Point2D ballPos) {
         ball = new RubberBall(ballPos);
     }
@@ -178,11 +191,17 @@ public class Wall {
 //        return tmp;
 //    }
 
+    /**
+     * Movement of player and ball
+     */
     public void move() {
         player.move();
         ball.move();
     }
 
+    /**
+     * The impact done from ball to brick and player
+     */
     public void findImpacts() {
         if (player.impact(ball)) {
             ball.reverseY();
@@ -202,6 +221,9 @@ public class Wall {
         }
     }
 
+    /**
+     * @return Movement of ball will reverse when there is impact
+     */
     private boolean impactWall() {
         for (Brick b : bricks) {
             switch (b.findImpact(ball)) {
@@ -225,27 +247,45 @@ public class Wall {
         return false;
     }
 
+    /**
+     * @return Ball will move if there's impact on the border of game
+     */
     private boolean impactBorder() {
         Point2D p = ball.getPosition();
         return ((p.getX() < area.getX()) || (p.getX() > (area.getX() + area.getWidth())));
     }
 
+    /**
+     * @return Get number of brick
+     */
     public int getBrickCount() {
         return brickCount;
     }
 
+    /**
+     * @return Get number of ball
+     */
     public int getBallCount() {
         return ballCount;
     }
 
+    /**
+     * @return Get individual score for every brick destroyed
+     */
     public int getIndividualScore() {
         return individualScore;
     }
 
+    /**
+     * Reset score
+     */
     public void resetScore() {
         individualScore = 0;
     }
 
+    /**
+     * @return Get total score from entire game
+     */
     public int getTotalScore() {
         totalScore += individualScore;
         return totalScore;
@@ -255,6 +295,9 @@ public class Wall {
         return ballLost;
     }
 
+    /**
+     * Reset the ball
+     */
     public void ballReset() {
         player.moveTo(startPoint);
         ball.moveTo(startPoint);
@@ -270,6 +313,9 @@ public class Wall {
         ballLost = false;
     }
 
+    /**
+     * Reset the wall
+     */
     public void wallReset() {
         for (Brick b : bricks)
             b.repair();
@@ -277,14 +323,23 @@ public class Wall {
         ballCount = 3;
     }
 
+    /**
+     * @return Ball becomes 0
+     */
     public boolean ballEnd() {
         return ballCount == 0;
     }
 
+    /**
+     * @return Brick is 0
+     */
     public boolean isDone() {
         return brickCount == 0;
     }
 
+    /**
+     * Move to next level
+     */
     public void nextLevel() {
         bricks = levels[level++];
         this.brickCount = bricks.length;
@@ -294,14 +349,23 @@ public class Wall {
         return level < levels.length;
     }
 
+    /**
+     * @param s Set ball speed
+     */
     public void setBallXSpeed(int s) {
         ball.setXSpeed(s);
     }
 
+    /**
+     * @param s Set ball speed
+     */
     public void setBallYSpeed(int s) {
         ball.setYSpeed(s);
     }
 
+    /**
+     * Reset number of ball
+     */
     public void resetBallCount() {
         ballCount = 3;
     }

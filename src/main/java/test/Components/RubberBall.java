@@ -23,6 +23,10 @@ import java.awt.*;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
 
+/**
+ * This class is to show the characteristics of rubber balls
+ * @author Sue Sim
+ */
 public class RubberBall extends Ball {
 
 
@@ -31,11 +35,20 @@ public class RubberBall extends Ball {
     private static final Color DEF_BORDER_COLOR = DEF_INNER_COLOR.darker().darker();
 
 
+    /**
+     * @param center Center of ball
+     */
     public RubberBall(Point2D center) {
         super(center, DEF_RADIUS, DEF_RADIUS, DEF_INNER_COLOR, DEF_BORDER_COLOR);
     }
 
 
+    /**
+     * @param center Center of ball
+     * @param radiusA Radius of ball
+     * @param radiusB Radius of ball
+     * @return Appearance of rubber ball
+     */
     @Override
     protected Shape makeBall(Point2D center, int radiusA, int radiusB) {
 

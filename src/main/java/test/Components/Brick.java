@@ -6,7 +6,8 @@ import java.awt.geom.Point2D;
 import java.util.Random;
 
 /**
- * Created by filippo on 04/09/16.
+ * This class is to show the characteristics of bricks in general
+ * @author Sue Sim
  */
 abstract public class Brick {
 
@@ -35,6 +36,14 @@ abstract public class Brick {
     private boolean broken;
 
 
+    /**
+     * @param name Name of brick
+     * @param pos Position of brick
+     * @param size Size of brick
+     * @param border Border color of brick
+     * @param inner Inner color of brick
+     * @param strength Strength of brick
+     */
     public Brick(String name, Point pos, Dimension size, Color border, Color inner, int strength) {
         rnd = new Random();
         broken = false;
@@ -47,8 +56,18 @@ abstract public class Brick {
 
     }
 
+    /**
+     * @param pos Position of brick
+     * @param size Size of brick
+     * @return Appearance of brick
+     */
     protected abstract Shape makeBrickFace(Point pos, Dimension size);
 
+    /**
+     * @param point Position where the impact came
+     * @param dir Direction of the part that got hit
+     * @return True if brick is broken, else false
+     */
     public boolean setImpact(Point2D point, int dir) {
         if (broken)
             return false;
@@ -59,15 +78,25 @@ abstract public class Brick {
     public abstract Shape getBrick();
 
 
+    /**
+     * @return Get border color of brick
+     */
     public Color getBorderColor() {
         return border;
     }
 
+    /**
+     * @return Get color of brick itself
+     */
     public Color getInnerColor() {
         return inner;
     }
 
 
+    /**
+     * @param b The ball used to hit the brick
+     * @return The impact done on the brick
+     */
     public final int findImpact(Ball b) {
         if (broken)
             return 0;
@@ -87,16 +116,25 @@ abstract public class Brick {
         return broken;
     }
 
+    /**
+     * Reset strength of ball to initial strength
+     */
     public void repair() {
         broken = false;
         setStrength(fullStrength);
     }
 
+    /**
+     * This is when one damage is done on cement and steel bricks
+     */
     public void impact() {
         setStrength(getStrength() - 1);
         broken = (getStrength() == 0);
     }
 
+    /**
+     * @return Get random tries of hitting a specific brick
+     */
     public static Random getRnd() {
         return rnd;
     }

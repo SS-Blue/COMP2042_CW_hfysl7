@@ -19,7 +19,10 @@ package test.Components;
 
 import java.awt.*;
 
-
+/**
+ * This class is to show the characteristics of the player (paddle)
+ * @author Sue Sim
+ */
 public class Player {
 
 
@@ -35,6 +38,12 @@ public class Player {
     private int max;
 
 
+    /**
+     * @param ballPoint Center point of ball
+     * @param width Width of player
+     * @param height Height of player
+     * @param container Shaping of player
+     */
     public Player(Point ballPoint, int width, int height, Rectangle container) {
         this.setBallPoint(ballPoint);
         setMoveAmount(0);
@@ -44,6 +53,11 @@ public class Player {
 
     }
 
+    /**
+     * @param width Width of player
+     * @param height Height of player
+     * @return Appearance of player
+     */
     private Rectangle makeRectangle(int width, int height) {
         Point p = new Point((int) (getBallPoint().getX() - (width / 2)), (int) getBallPoint().getY());
         return new Rectangle(p, new Dimension(width, height));
@@ -53,6 +67,9 @@ public class Player {
         return playerFace.contains(b.getPosition()) && playerFace.contains(b.down);
     }
 
+    /**
+     * Movement of player
+     */
     public void move() {
         double x = getBallPoint().getX() + getMoveAmount();
         if (x < min || x > max)
@@ -61,10 +78,16 @@ public class Player {
         playerFace.setLocation(getBallPoint().x - (int) playerFace.getWidth() / 2, getBallPoint().y);
     }
 
+    /**
+     * When ball moves to the left
+     */
     public void moveLeft() {
         setMoveAmount(-DEF_MOVE_AMOUNT);
     }
 
+    /**
+     * When ball moves to the right
+     */
     public void moveRight() {
         setMoveAmount(DEF_MOVE_AMOUNT);
     }
@@ -77,6 +100,9 @@ public class Player {
         return playerFace;
     }
 
+    /**
+     * @param p Location where the player wants to move to
+     */
     public void moveTo(Point p) {
         getBallPoint().setLocation(p);
         playerFace.setLocation(getBallPoint().x - (int) playerFace.getWidth() / 2, getBallPoint().y);
