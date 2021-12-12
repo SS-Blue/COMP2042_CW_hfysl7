@@ -14,17 +14,17 @@
 - This project was separated into 3 different packages, which are `Compenents`, `Controller` and `Display` respectively.
 - All spacings are reformatted to make the codes neater to read.
 - Some variable names are changed to make the codes easier to understand.
+- Longer and complicated codes are simplified to make it shorter and understandable.
 - Crack class is separated from the brick class.
-- Maven is implemented into the project for file building.
 - MVC is implemented for encapsulation.
-- JUnit testing are also added to test the files.
+- JUnit tests are also added to test the files.
 
 # Additional Features
 - An instruction page is added for user guidance.
-- Background music is added into the entire game.
 - Background images are added into the home menu, instructions, and the game board windows.
 - A timer is added to display the time taken for each user to finish a level.
 - An additional level with the highest difficulty is added into the game.
 - Individual points for each brick destroyed in every level are added.
 - A popup screen displaying the total points obtained from all levels are added.
 - The number of lives (balls) displayed in game are replaced with heart emojis.
+- Maven is implemented into the project for file building.
