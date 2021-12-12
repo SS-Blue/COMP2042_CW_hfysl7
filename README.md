@@ -17,10 +17,11 @@
 - Crack class is separated from the brick class.
 - Maven is implemented into the project for file building.
 - MVC is implemented for encapsulation.
-- JUnit tests are also added to test the files.
+- JUnit testing are also added to test the files.
 
 # Additional Features
 - An instruction page is added for user guidance.
+- Background music is added into the entire game.
 - Background images are added into the home menu, instructions, and the game board windows.
 - A timer is added to display the time taken for each user to finish a level.
 - An additional level with the highest difficulty is added into the game.
