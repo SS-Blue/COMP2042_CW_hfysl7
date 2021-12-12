@@ -8,6 +8,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+/**
+ * This class is to show the controller features in game board
+ * @author Sue Sim
+ */
 public class GameBoardController extends JComponent implements KeyListener, MouseListener, MouseMotionListener {
 
     private Timer gameTimer;
@@ -16,6 +20,10 @@ public class GameBoardController extends JComponent implements KeyListener, Mous
 
     private Wall wall;
 
+    /**
+     * @param owner To call game frame
+     * @param view To call game board
+     */
     public GameBoardController(GameFrame owner, GameBoardView view) {
         this.view = view;
         this.owner = owner;
@@ -24,6 +32,9 @@ public class GameBoardController extends JComponent implements KeyListener, Mous
         this.timer();
     }
 
+    /**
+     * Display brick count, time taken, lives remaining and individual score
+     */
     private void timer(){
         gameTimer = new Timer(10, e -> {
             view.wall.move();
@@ -34,10 +45,11 @@ public class GameBoardController extends JComponent implements KeyListener, Mous
             view.individualScore = String.format("Score: %d",view.wall.getIndividualScore());
             if (view.wall.isBallLost()) {
                 if (view.wall.ballEnd()) {
+                    view.printHighScore();
                     view.wall.wallReset();
                     view.timer.resetTimer();
                     view.wall.resetScore();
-                    view.message = "Game over";
+                    view.message = "Game Over";
                 }
                 view.wall.ballReset();
                 gameTimer.stop();
@@ -64,6 +76,9 @@ public class GameBoardController extends JComponent implements KeyListener, Mous
     public void keyTyped(KeyEvent keyEvent) {
     }
 
+    /**
+     * @param keyEvent Key to enable player movement
+     */
     @Override
     public void keyPressed(KeyEvent keyEvent) {
         switch (keyEvent.getKeyCode()) {
@@ -89,7 +104,7 @@ public class GameBoardController extends JComponent implements KeyListener, Mous
                     }
                     else {
                         gameTimer.start();
-                        view.timer.countDownStart();
+                        view.timer.startTimer();
                     }
                 break;
             case KeyEvent.VK_F1:
@@ -105,6 +120,9 @@ public class GameBoardController extends JComponent implements KeyListener, Mous
         view.wall.player.stop();
     }
 
+    /**
+     * @param mouseEvent Display after clicking on a button
+     */
     @Override
     public void mouseClicked(MouseEvent mouseEvent) {
         Point p = mouseEvent.getPoint();
@@ -126,31 +144,49 @@ public class GameBoardController extends JComponent implements KeyListener, Mous
 
     }
 
+    /**
+     * @param mouseEvent When mouse is pressed
+     */
     @Override
     public void mousePressed(MouseEvent mouseEvent) {
 
     }
 
+    /**
+     * @param mouseEvent When mouse is released
+     */
     @Override
     public void mouseReleased(MouseEvent mouseEvent) {
 
     }
 
+    /**
+     * @param mouseEvent When mouse enters window
+     */
     @Override
     public void mouseEntered(MouseEvent mouseEvent) {
 
     }
 
+    /**
+     * @param mouseEvent When mouse exits from window
+     */
     @Override
     public void mouseExited(MouseEvent mouseEvent) {
 
     }
 
+    /**
+     * @param mouseEvent When mouse drags on window
+     */
     @Override
     public void mouseDragged(MouseEvent mouseEvent) {
 
     }
 
+    /**
+     * @param mouseEvent When mouse moves in window
+     */
     @Override
     public void mouseMoved(MouseEvent mouseEvent) {
         Point p = mouseEvent.getPoint();
@@ -163,13 +199,20 @@ public class GameBoardController extends JComponent implements KeyListener, Mous
             this.setCursor(Cursor.getDefaultCursor());
         }
     }
+
+    /**
+     * When focus is lost
+     */
     public void onLostFocus() {
         view.timer.stopTimer();
         gameTimer.stop();
-        view.message = "Focus Lost";
+        view.message = "Start Game";
         view.repaint();
     }
 
+    /**
+     * Initialization
+     */
     private void initialize() {
         view.setPreferredSize(new Dimension(view.DEF_WIDTH, view.DEF_HEIGHT));
         this.setFocusable(true);

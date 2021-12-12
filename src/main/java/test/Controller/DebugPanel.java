@@ -24,7 +24,10 @@ import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-
+/**
+ * This class is to show the debug panel of the game
+ * @author Sue Sim
+ */
 public class DebugPanel extends JPanel {
 
     private static final Color DEF_BKG = Color.WHITE;
@@ -58,17 +61,31 @@ public class DebugPanel extends JPanel {
 
     }
 
+    /**
+     * Initialization
+     */
     private void initialize() {
         this.setBackground(DEF_BKG);
         this.setLayout(new GridLayout(2, 2));
     }
 
+    /**
+     * @param title Title of button
+     * @param e Actions taken from button
+     * @return Execution of actions taken from button
+     */
     private JButton makeButton(String title, ActionListener e) {
         JButton out = new JButton(title);
         out.addActionListener(e);
         return out;
     }
 
+    /**
+     * @param min Minimum point of slider
+     * @param max Maximum point of slider
+     * @param e Actions taken from slider
+     * @return Execution of actions taken from slider
+     */
     private JSlider makeSlider(int min, int max, ChangeListener e) {
         JSlider out = new JSlider(min, max);
         out.setMajorTickSpacing(1);
@@ -78,6 +95,10 @@ public class DebugPanel extends JPanel {
         return out;
     }
 
+    /**
+     * @param x Set value on x-axis
+     * @param y Set value on y-axis
+     */
     public void setValues(int x, int y) {
         ballXSpeed.setValue(x);
         ballYSpeed.setValue(y);
