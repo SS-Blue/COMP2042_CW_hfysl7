@@ -29,7 +29,7 @@ public class GameTimer implements ActionListener{
 
     public void actionPerformed(ActionEvent e) {
 
-        if (seconds == 180)
+        if (seconds == 100000)
             timer.stop();
         else{
             seconds++;
