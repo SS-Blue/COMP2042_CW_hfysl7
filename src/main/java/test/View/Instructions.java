@@ -8,7 +8,10 @@ import java.awt.event.MouseMotionListener;
 import java.awt.font.FontRenderContext;
 import java.awt.geom.Rectangle2D;
 
-
+/**
+ * This class is to show the instructions page of the program
+ * @author Sue Sim
+ */
 public class Instructions extends JComponent implements MouseListener, MouseMotionListener {
 
     private static final String TITLE = "How To Play";
@@ -49,6 +52,10 @@ public class Instructions extends JComponent implements MouseListener, MouseMoti
     private boolean returnClicked;
 
 
+    /**
+     * @param owner To call game frame
+     * @param area To call
+     */
     public Instructions(GameFrame owner, Dimension area) {
 
         this.setFocusable(true);
@@ -85,7 +92,9 @@ public class Instructions extends JComponent implements MouseListener, MouseMoti
         drawMenu((Graphics2D) g);
     }
 
-
+    /**
+     * @param g2d Graphics on instructions page in general
+     */
     public void drawMenu(Graphics2D g2d) {
 
         drawContainer(g2d);
@@ -113,6 +122,9 @@ public class Instructions extends JComponent implements MouseListener, MouseMoti
         g2d.setColor(prevColor);
     }
 
+    /**
+     * @param g2d Graphics on the background of home menu
+     */
     private void drawContainer(Graphics2D g2d) {
         Image picture = Toolkit.getDefaultToolkit().getImage("bear.jpg");
 
@@ -138,6 +150,9 @@ public class Instructions extends JComponent implements MouseListener, MouseMoti
         g2d.drawImage(picture, 0, 0, this);
     }
 
+    /**
+     * @param g2d Graphics on all texts in home menu
+     */
     private void drawText(Graphics2D g2d) {
 
         g2d.setColor(TEXT_COLOR);
@@ -183,6 +198,9 @@ public class Instructions extends JComponent implements MouseListener, MouseMoti
         g2d.drawString(INSTRUCTION_4, sX, sY);
     }
 
+    /**
+     * @param g2d Graphics of all buttons in home menu
+     */
     private void drawButton(Graphics2D g2d) {
 
         FontRenderContext frc = g2d.getFontRenderContext();
@@ -244,6 +262,9 @@ public class Instructions extends JComponent implements MouseListener, MouseMoti
 
     }
 
+    /**
+     * @param mouseEvent Prompt different windows depending on what user click
+     */
     @Override
     public void mouseClicked(MouseEvent mouseEvent) {
         Point p = mouseEvent.getPoint();
@@ -254,6 +275,9 @@ public class Instructions extends JComponent implements MouseListener, MouseMoti
         }
     }
 
+    /**
+     * @param mouseEvent When mouse is pressed
+     */
     @Override
     public void mousePressed(MouseEvent mouseEvent) {
         Point p = mouseEvent.getPoint();
@@ -266,6 +290,9 @@ public class Instructions extends JComponent implements MouseListener, MouseMoti
         }
     }
 
+    /**
+     * @param mouseEvent When mouse is released
+     */
     @Override
     public void mouseReleased(MouseEvent mouseEvent) {
         if (startClicked) {
@@ -277,22 +304,33 @@ public class Instructions extends JComponent implements MouseListener, MouseMoti
         }
     }
 
+    /**
+     * @param mouseEvent When mouse enters window
+     */
     @Override
     public void mouseEntered(MouseEvent mouseEvent) {
 
     }
 
+    /**
+     * @param mouseEvent When mouse exits from window
+     */
     @Override
     public void mouseExited(MouseEvent mouseEvent) {
 
     }
 
-
+    /**
+     * @param mouseEvent When mouse drags on window
+     */
     @Override
     public void mouseDragged(MouseEvent mouseEvent) {
 
     }
 
+    /**
+     * @param mouseEvent When mouse moves in window
+     */
     @Override
     public void mouseMoved(MouseEvent mouseEvent) {
         Point p = mouseEvent.getPoint();

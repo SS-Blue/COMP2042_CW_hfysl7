@@ -24,8 +24,18 @@ import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * This class is where users run the game
+ * @author Sue Sim
+ */
 public class GraphicsMain {
 
+    /**
+     * @param args
+     * @throws UnsupportedAudioFileException
+     * @throws IOException
+     * @throws LineUnavailableException
+     */
     public static void main(String[] args) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         EventQueue.invokeLater(() -> new GameFrame().initialize());
 

@@ -7,6 +7,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.font.FontRenderContext;
 
+/**
+ * This class is to show the view features in game board
+ * @author Sue Sim
+ */
 public class GameBoardView extends JComponent{
     private static final String CONTINUE = "Continue";
     private static final String RESTART = "Restart";
@@ -65,6 +69,9 @@ public class GameBoardView extends JComponent{
         wall.nextLevel();
     }
 
+    /**
+     * Display total score in popup window
+     */
     public void printHighScore() {
         StringBuilder text = new StringBuilder();
 
@@ -72,6 +79,9 @@ public class GameBoardView extends JComponent{
         JOptionPane.showMessageDialog(null, "Your Score: " + wall.getTotalScore(), "High Score", JOptionPane.PLAIN_MESSAGE, icon);
     }
 
+    /**
+     * @param g Graphics on the elements in the game
+     */
     public void paint(Graphics g) {
 
         Graphics2D g2d = (Graphics2D) g;
@@ -98,6 +108,9 @@ public class GameBoardView extends JComponent{
         Toolkit.getDefaultToolkit().sync();
     }
 
+    /**
+     * @param g2d Graphics of the background of game only
+     */
     private void clear(Graphics2D g2d) {
         Color tmp = g2d.getColor();
         g2d.setColor(BG_COLOR);
@@ -109,8 +122,8 @@ public class GameBoardView extends JComponent{
     }
 
     /**
-     * @param brick
-     * @param g2d
+     * @param brick Allocation of brick
+     * @param g2d Graphics of brick
      */
     private void drawBrick(Brick brick, Graphics2D g2d) {
         Color tmp = g2d.getColor();
@@ -124,6 +137,10 @@ public class GameBoardView extends JComponent{
         g2d.setColor(tmp);
     }
 
+    /**
+     * @param ball Allocation of ball
+     * @param g2d Graphics of ball
+     */
     private void drawBall(Ball ball, Graphics2D g2d) {
         Color tmp = g2d.getColor();
 
@@ -138,6 +155,10 @@ public class GameBoardView extends JComponent{
         g2d.setColor(tmp);
     }
 
+    /**
+     * @param p Allocation of player
+     * @param g2d Graphics of player
+     */
     private void drawPlayer(Player p, Graphics2D g2d) {
         Color tmp = g2d.getColor();
 
@@ -151,11 +172,17 @@ public class GameBoardView extends JComponent{
         g2d.setColor(tmp);
     }
 
+    /**
+     * @param g2d Graphics on  menu
+     */
     private void drawMenu(Graphics2D g2d) {
         obscureGameBoard(g2d);
         drawPauseMenu(g2d);
     }
 
+    /**
+     * @return Displaying number of lives remaining
+     */
     public String remainingLife(){
         life = "";
         for(int a = 0; a < wall.getBallCount(); a++)
@@ -178,6 +205,9 @@ public class GameBoardView extends JComponent{
         g2d.setColor(tmpColor);
     }
 
+    /**
+     * @param g2d Graphics of the pause (esc key) menu
+     */
     private void drawPauseMenu(Graphics2D g2d) {
         Font tmpFont = g2d.getFont();
         Color tmpColor = g2d.getColor();
