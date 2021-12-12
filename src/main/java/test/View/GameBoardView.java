@@ -79,10 +79,10 @@ public class GameBoardView extends JComponent{
         clear(g2d);
 
         g2d.setColor(Color.GREEN);
-        g2d.drawString(message, 260, 205);
-        g2d.drawString(message2, 260, 225);
-        g2d.drawString(message3, 220, 245);
-        g2d.drawString(individualScore, 540, 435);
+        g2d.drawString(message, 260, 190);
+        g2d.drawString(message2, 260, 210);
+        g2d.drawString(message3, 220, 230);
+        g2d.drawString(individualScore, 525, 425);
 
         drawBall(wall.ball, g2d);
 
@@ -108,6 +108,10 @@ public class GameBoardView extends JComponent{
         g2d.drawImage(picture, 0, 0, this);
     }
 
+    /**
+     * @param brick
+     * @param g2d
+     */
     private void drawBrick(Brick brick, Graphics2D g2d) {
         Color tmp = g2d.getColor();
 
